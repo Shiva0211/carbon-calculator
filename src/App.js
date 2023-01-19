@@ -1,8 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from "react";
+import "./App.css";
+import Home from "./components/Home";
+import Results from "./components/Results";
+import StepperComponent from "./components/StepperComponent";
 function App() {
-  return <h1><center>Hello folks !</center></h1>
+  let component;
+  switch (window.location.pathname) {
+    case "/":
+      component = <Home />;
+      break;
+    case "/Utility":
+      component = <StepperComponent />;
+      break;
+    case "/Results":
+      component = <Results />;
+      break;
+    default:
+      component = <Home />;
+      break;
+  }
+  return <>{component}</>;
 }
 
 export default App;
