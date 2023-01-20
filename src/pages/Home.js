@@ -7,6 +7,7 @@ import Utility from "../components/Utility";
 import Waste from "../components/Waste";
 import Food from "../components/Food";
 import Footer from "../components/Footer";
+import CalculatorService from '../services/calculator';
 
 const Home = () => {
   const steps=[{ label: 'Utility', content: <Utility /> }, { label: 'Waste', content: <Waste /> }, { label: 'Food', content: <Food /> }];
@@ -19,6 +20,11 @@ const Home = () => {
       setCurrentStep(currentStep+1);
     }
   }
+
+  const onSubmit = async () => {
+    await CalculatorService.calculateCarbonFootprint({});
+  }
+
   return (
     <>
   <div>      
@@ -40,6 +46,7 @@ className="w-full"
 {steps[currentStep].content}
 </div>
 <Button className="w-16 mt-8" onClick={onNext}>Next</Button>
+<Button className="w-16 mt-8" onClick={onSubmit}>Submit</Button>
 </div>
 <Footer/>
     </>
